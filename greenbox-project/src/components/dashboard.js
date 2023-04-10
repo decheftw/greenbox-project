@@ -13,6 +13,7 @@ function Dashboard() {
     const [selectedSchools, setSelectedSchools] = useState("All");
     const [selectedDates, setSelectedDates] = useState("Last Month");
     useEffect(() => {
+        consoleLogData();
         setConversionData(getConversions(selectedSchools));
         setRevenueData(getRevenue(selectedSchools, selectedDates));
         setPickupData(getPickups(selectedSchools));
