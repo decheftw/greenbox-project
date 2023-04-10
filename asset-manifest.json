@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/greenbox-project/static/css/main.e6c13ad2.css",
-    "main.js": "/greenbox-project/static/js/main.42080cbd.js",
+    "main.js": "/greenbox-project/static/js/main.74b64b9f.js",
     "static/js/787.a4d51014.chunk.js": "/greenbox-project/static/js/787.a4d51014.chunk.js",
     "index.html": "/greenbox-project/index.html",
     "main.e6c13ad2.css.map": "/greenbox-project/static/css/main.e6c13ad2.css.map",
-    "main.42080cbd.js.map": "/greenbox-project/static/js/main.42080cbd.js.map",
+    "main.74b64b9f.js.map": "/greenbox-project/static/js/main.74b64b9f.js.map",
     "787.a4d51014.chunk.js.map": "/greenbox-project/static/js/787.a4d51014.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.42080cbd.js"
+    "static/js/main.74b64b9f.js"
   ]
 }
