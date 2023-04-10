@@ -2,7 +2,6 @@
   "name": "greenbox-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://decheftw.github.io/greenbox-project",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -18,6 +17,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "npm run lint -- --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
