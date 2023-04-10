@@ -15,10 +15,10 @@ export const getConversions = (selectedSchools) => {
             }
         }
     }
-    return {
-        reservations, 
-        accountsMade
-    };
+    return [
+        {name: "Accounts Without Reservation", value: accountsMade-reservations},
+        {name: "Reservations",value: reservations}
+    ];
 }
 
 // Months is a list of months of which data is requested from in the form of mm-yyyy
@@ -38,7 +38,15 @@ export const getRevenue = (selectedSchools, months) => {
             }
         }
     }
-    return revenuePerMonth
+    const revenuePerMonthArray = [];
+    for (const [month] of Object.entries(revenuePerMonth)) {
+        const monthlyRevenueObject = {
+            "name": month,
+            "revenue": revenuePerMonth[month]
+        }
+        revenuePerMonthArray.push(monthlyRevenueObject)
+    }
+    return revenuePerMonthArray
 }
 
 export const getPickups = (selectedSchools) => {
@@ -46,21 +54,34 @@ export const getPickups = (selectedSchools) => {
     for (let i = 0; i < data.length; i++) {
         const entry = data[i];
         if (selectedSchools.includes(entry.school) && entry.hasOwnProperty('monthlyCost')) {
-            const currentDate = new Date();
-            const pickupDate = Date.parse(entry.pickupDate);
+            const currentDate = new Date("2023-01-01");
+            const pickupDate = new Date(entry.pickupDate);
+            const pickupDateString = pickupDate.toISOString().substring(0, 10);
             if (currentDate < pickupDate) {
-                if (pickups.hasOwnProperty(entry.pickupDate)) {
-                    pickups[entry.pickupDate]["customers"] += 1;
-                    pickups[entry.pickupDate]["items"] += entry.numItems;
+                if (pickups.hasOwnProperty(pickupDateString)) {
+                    pickups[pickupDateString]["customers"] += 1;
+                    pickups[pickupDateString]["items"] += entry.numItems;
+                } else {
+                    const pickupDateData = {
+                        "customers": 1,
+                        "items": entry.numItems
+                    };
+                    pickups[pickupDateString] = pickupDateData;
                 }
-            } else {
-                const pickupDateData = {
-                    "customers": 1,
-                    "items": entry.numItems
-                };
-                pickups[entry.pickupDate] = pickupDateData;
             }
         }
     }
-    return pickups
+    const pickupsDataArray = [];
+    for (const [day] of Object.entries(pickups)) {
+        const pickupsDataObject = {
+            "day": day,
+            "customers": pickups[day]["customers"],
+            "items": pickups[day]["items"]
+        }
+        pickupsDataArray.push(pickupsDataObject)
+    }
+    pickupsDataArray.sort(function(a,b) {
+        return new Date(a.day) - new Date(b.day);
+    });
+    return pickupsDataArray
 }
