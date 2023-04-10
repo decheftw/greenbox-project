@@ -15,6 +15,7 @@ function Dashboard() {
     useEffect(() => {
         consoleLogData();
         setConversionData(getConversions(selectedSchools));
+        console.log(conversionData);
         setRevenueData(getRevenue(selectedSchools, selectedDates));
         setPickupData(getPickups(selectedSchools));
     }, [selectedSchools, selectedDates]);
