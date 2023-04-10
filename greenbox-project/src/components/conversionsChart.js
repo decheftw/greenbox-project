@@ -5,6 +5,7 @@ function ConversionsChart(props) {
     let { data } = props;
     let number = "";
     if (data != undefined) {
+        console.log(data);
         number = data[1]["value"];
     }
     return (

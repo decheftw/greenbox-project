@@ -7,13 +7,12 @@ import PickupsTable from './pickupsTable';
 import SchoolSelectionDropdown from './schoolSelectionDropdown';
 
 function Dashboard() {
-    const [revenueData, setRevenueData] = useState([]);
-    const [conversionData, setConversionData] = useState({});
+    const [revenueData, setRevenueData] = useState();
+    const [conversionData, setConversionData] = useState();
     const [pickupData, setPickupData] = useState([]);
     const [selectedSchools, setSelectedSchools] = useState("All");
     const [selectedDates, setSelectedDates] = useState("Last Month");
     useEffect(() => {
-        consoleLogData();
         setConversionData(getConversions(selectedSchools));
         setRevenueData(getRevenue(selectedSchools, selectedDates));
         setPickupData(getPickups(selectedSchools));
