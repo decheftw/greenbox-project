@@ -18,10 +18,8 @@ export const getConversions = (selectedSchools) => {
             }
         }
     }
-    return [
-        {name: "Accounts Without Reservation", value: accountsMade-reservations},
-        {name: "Reservations",value: reservations}
-    ];
+    const conversionsDataObject = [{name: "Accounts Without Reservation", value: accountsMade-reservations}, {name: "Reservations",value: reservations}]
+    return conversionsDataObject
 }
 
 // Months is a list of months of which data is requested from in the form of mm-yyyy
