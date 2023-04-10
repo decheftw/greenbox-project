@@ -6,6 +6,9 @@ export const consoleLogData = () => {
 }
 
 export const getConversions = (selectedSchools) => {
+    if (selectedSchools == "All") {
+        selectedSchools = ["Dartmouth", "Yale", "Princeton", "Harvard", "Cornell", "Brown", "Columbia", "UPenn"]
+    }
     let reservations = 0, accountsMade = 0;
     for (let i = 0; i < data.length; i++) {
         if (selectedSchools.includes(data[i].school)) {
@@ -23,6 +26,17 @@ export const getConversions = (selectedSchools) => {
 
 // Months is a list of months of which data is requested from in the form of mm-yyyy
 export const getRevenue = (selectedSchools, months) => {
+    if (selectedSchools == "All") {
+        selectedSchools = ["Dartmouth", "Yale", "Princeton", "Harvard", "Cornell", "Brown", "Columbia", "UPenn"]
+    }
+    if (months == "Last Month") {
+        months = ["03-2023"]
+    } else if (months == "Past 6 Months") {
+        months = ["10-2022","11-2022","12-2022","01-2023","02-2023","03-2023"]
+    }
+    else if (months == "Past Year") {
+        months = ["04-2022","05-2022","06-2022","07-2022","08-2022","09-2022","10-2022","11-2022","12-2022","01-2023","02-2023","03-2023"]
+    }
     const revenuePerMonth = Object.fromEntries(months.map(k => [k, 0]))
     for (let i = 0; i < data.length; i++) {
         const entry = data[i];
@@ -50,6 +64,9 @@ export const getRevenue = (selectedSchools, months) => {
 }
 
 export const getPickups = (selectedSchools) => {
+    if (selectedSchools == "All") {
+        selectedSchools = ["Dartmouth", "Yale", "Princeton", "Harvard", "Cornell", "Brown", "Columbia", "UPenn"]
+    }
     const pickups = {};
     for (let i = 0; i < data.length; i++) {
         const entry = data[i];
